@@ -1,0 +1,363 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: #000;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+
+#canvas-container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.ui-panel {
+    position: fixed;
+    z-index: 100;
+}
+
+.top-left {
+    top: 24px;
+    left: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.top-right {
+    top: 24px;
+    right: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 200px;
+}
+
+.cosmic-events {
+    top: 24px;
+    right: 240px;
+}
+
+.bottom-bar {
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.glass-panel {
+    backdrop-filter: blur(12px);
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px 20px;
+}
+
+.title-panel h1 {
+    font-size: 24px;
+    font-weight: 300;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 4px;
+}
+
+.info-panel {
+    background: rgba(0, 0, 0, 0.4);
+    max-width: 400px;
+    padding: 16px 20px;
+}
+
+.info-panel h2 {
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 8px;
+}
+
+.info-panel p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+}
+
+.planet-stats {
+    margin-top: 12px;
+    display: flex;
+    gap: 12px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.button-row {
+    display: flex;
+    gap: 8px;
+}
+
+.icon-button {
+    backdrop-filter: blur(12px);
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 12px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-button:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.control-panel {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.zoom-panel {
+    padding: 8px 12px;
+}
+
+.zoom-header,
+.view-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.zoom-controls {
+    display: flex;
+    gap: 6px;
+    justify-content: space-between;
+}
+
+.zoom-button {
+    flex: 1;
+    padding: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.zoom-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.view-panel {
+    padding: 8px;
+}
+
+.view-button {
+    width: 100%;
+    padding: 6px 12px;
+    margin-bottom: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.view-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.view-button.active {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.toggle-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.toggle-button:hover {
+    color: white;
+}
+
+.toggle-button.active {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.events-panel {
+    padding: 12px;
+    min-width: 200px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fbbf24;
+}
+
+.panel-header span {
+    font-size: 11px;
+    font-weight: 500;
+    color: white;
+}
+
+.event-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.event-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.event-button.active {
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.event-button.active[data-event="solar_storm"] {
+    background: rgba(234, 88, 12, 0.8);
+}
+
+.event-button.active[data-event="rogue_planet"] {
+    background: rgba(147, 51, 234, 0.8);
+}
+
+.event-button.active[data-event="orbital_resonance"] {
+    background: rgba(37, 99, 235, 0.8);
+}
+
+.event-button.active[data-event="asteroid_impact"] {
+    background: rgba(220, 38, 38, 0.8);
+}
+
+.event-button.active[data-event="gravity_waves"] {
+    background: rgba(6, 182, 212, 0.8);
+}
+
+.event-button.active[data-event="time_lapse"] {
+    background: rgba(22, 163, 74, 0.8);
+}
+
+.event-alert {
+    position: fixed;
+    top: 33%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    backdrop-filter: blur(8px);
+    background: rgba(239, 68, 68, 0.2);
+    padding: 12px 24px;
+    border-radius: 9999px;
+    border: 1px solid rgba(239, 68, 68, 0.5);
+    pointer-events: none;
+    z-index: 200;
+}
+
+.event-alert p {
+    color: #fecaca;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.info-bar p {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.scale-info {
+    padding: 8px 16px;
+}
+
+.scale-info p {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.4);
+    font-family: 'Courier New', monospace;
+}
+
+/* Custom scrollbar for events panel */
+.events-panel::-webkit-scrollbar {
+    width: 6px;
+}
+
+.events-panel::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+}
+
+.events-panel::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+.events-panel::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+    .top-left, .top-right, .cosmic-events {
+        display: none;
+    }
+    
+    .bottom-bar {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+    }
+}
